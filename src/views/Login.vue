@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="member-login">
     <div class="menu">
       <h3>会员登录系统</h3>
       <el-form
@@ -10,10 +10,10 @@
         class="demo-ruleForm"
       >
         <el-form-item label="账户" prop="username">
-          <el-input v-model="ruleForm.username"></el-input>
+          <el-input v-model="ruleForm.username" class="inp"></el-input>
         </el-form-item>
         <el-form-item label="密码" prop="password">
-          <el-input v-model="ruleForm.password"></el-input>
+          <el-input v-model="ruleForm.password" class="inp"></el-input>
         </el-form-item>
         <el-form-item>
           <el-button type="primary" @click="submitForm('ruleForm')"
@@ -48,10 +48,27 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+.member-login{
+  width: 100%;
+  height: 100%;
+  background-image: url('../../public/2051313.jpg');
+  overflow: hidden;
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
 .menu {
   width: 500px;
-  height: 400px;
+  height: 300px;
   background-color: skyblue;
   margin: auto;
+  h3{
+    margin-top: 150px;
+    margin-left: 200px;
+    margin-bottom: 60px;
+  }
+  .inp{
+    width: 350px;
+  }
 }
 </style>
