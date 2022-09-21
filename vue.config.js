@@ -13,7 +13,7 @@ module.exports = defineConfig({
         target: process.env.VUE_APP_SERVICE_URL,
         changeOrigin: true,
         pathRewrite: {
-          ["^" + process.env.VUE_APP_BASE_API]: "",
+          ["^" + process.env.VUE_APP_BASE_API]: ""
         },
       },
       // "/dev-api": {

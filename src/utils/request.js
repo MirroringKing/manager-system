@@ -6,20 +6,31 @@ const service = axios.create({
   timeout: 5000,
 });
 
+// 自定义错误信息提示内容
+const exceptionMessage = {
+  1000: '用户名或者密码发生错误',
+  3000: ''
+}
+
 // 请求拦截器
 service.interceptors.request.use(function (config) {
-  return config;
-}),
-  // eslint-disable-next-line prettier/prettier
-    function (error) {
-    // eslint-disable-next-line prettier/prettier
-        return Promise.reject(error);
+    return config;
+  }),
+  function (error) {
+    return Promise.reject(error);
   };
 
 // 响应拦截器
 service.interceptors.response.use(function (response) {
-  return response;
-}),
+    if (response.status < 400) {
+      return response.data.data
+    }
+    if (response.status = 401) {
+      return
+    }
+    _showError(response.data.code, response.data.message)
+    return response;
+  }),
   function (error) {
     return Promise.reject(error);
   };
@@ -27,7 +38,7 @@ service.interceptors.response.use(function (response) {
 // 解决不同请求时候统一使用data来进行传参
 const request = (options) => {
   options.method = options.method || "get";
-  if (options.method.toLocaleLowerCase() === "get") {
+  if (options.method.toLowerCase() === "get") {
     options.params = options.data || options.params;
     delete options.data;
   }

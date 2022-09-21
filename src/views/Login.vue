@@ -26,6 +26,7 @@
 </template>
 
 <script>
+import {login} from '../api/user.js'
 export default {
   data() {
     return {
@@ -44,14 +45,29 @@ export default {
       },
     };
   },
-  methods: {},
+  methods: {
+    submitForm() {
+      this.$refs["ruleForm"].validate((valid) => {
+        if (!valid) return;
+        this.handleLogin();
+      });
+    },
+    async handleLogin() {
+      try {
+        const response = await login(this.ruleForm);
+        console.log('token=>',response.token);
+      } catch (e) {
+        console.log(e.message);
+      }
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>
-.member-login{
+.member-login {
   width: 100%;
   height: 100%;
-  background-image: url('../../public/2051313.jpg');
+  background-image: url("../../public/2051313.jpg");
   overflow: hidden;
   background-position: 0 0;
   background-repeat: no-repeat;
@@ -62,12 +78,12 @@ export default {
   height: 300px;
   background-color: skyblue;
   margin: auto;
-  h3{
+  h3 {
     margin-top: 150px;
     margin-left: 200px;
     margin-bottom: 60px;
   }
-  .inp{
+  .inp {
     width: 350px;
   }
 }
