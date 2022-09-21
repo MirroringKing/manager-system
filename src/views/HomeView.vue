@@ -14,7 +14,9 @@
 <script>
 // @ is an alias to /src
 import HelloWorld from "@/components/HelloWorld.vue";
-import axios from "axios";
+// import axios from "axios";
+import TestApi from "../api/test";
+// console.log(request);
 
 export default {
   name: "HomeView",
@@ -22,16 +24,29 @@ export default {
     HelloWorld,
   },
   created() {
-    axios({
-      url: process.env.VUE_APP_BASE_API + "/",
-      method: "GET",
-    })
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    this.getBanner();
+    //   request({
+    //     url: process.env.VUE_APP_BASE_API + "/",
+    //     method: "GET",
+    //   })
+    //     .then((response) => {
+    //       console.log(response);
+    //     })
+    //     .catch((error) => {
+    //       console.log(error);
+    //     });
+    // },
+  },
+  methods: {
+    getBanner() {
+      TestApi.getBanner()
+        .then((response) => {
+          console.log("banner=>", response);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
   },
 };
 </script>
