@@ -1,4 +1,3 @@
-// eslint-disable-next-line prettier/prettier
 import axios from "axios";
 
 // 创建axios配置
@@ -12,8 +11,16 @@ const exceptionMessage = {
   3000: ''
 }
 
+import {
+  Message
+} from 'element-ui'
+
+import store from '../store'
+
 // 请求拦截器
 service.interceptors.request.use(function (config) {
+    const token = store.getters.token
+    if (token) config.headers.authorization = "Bearer" + token
     return config;
   }),
   function (error) {

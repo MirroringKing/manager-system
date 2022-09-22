@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import {login} from '../api/user.js'
+import {login,userInfo} from '../api/user.js'
 export default {
   data() {
     return {
@@ -53,13 +53,17 @@ export default {
       });
     },
     async handleLogin() {
-      try {
-        const response = await login(this.ruleForm);
-        console.log('token=>',response.token);
-      } catch (e) {
-        console.log(e.message);
-      }
-    },
+      const token = await this.$store.dispatch("login",this.ruleForm)
+      if(!token) return
+      const userInfo = await this.$store.dispatch("handleUserInfo")
+      if(!userInfo) return
+      this.$message({
+        type: 'success', // success error warning
+        message: '登录成功',
+        duration: 2000,
+      })
+      this.$router.push('/')
+     },
   },
 };
 </script>

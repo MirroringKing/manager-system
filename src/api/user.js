@@ -7,3 +7,11 @@ export const login = (data = {}) => {
         data
     })
 }
+
+export const userInfo = (data = {}) => {
+    return request({
+        url: '/admin/getUserInfo',
+        method: "GET",
+        data
+    })
+}
