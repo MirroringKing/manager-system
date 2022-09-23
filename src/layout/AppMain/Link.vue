@@ -15,7 +15,7 @@ export default {
   },
   computed:{
     breadcrumbText(){
-        return this.$route.meta?.title
+        return this.$route.meta.title
     }
   }
 };

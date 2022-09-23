@@ -18,7 +18,7 @@ export const setUserInfo = (userInfo) => {
 
 // 获取用户新信息
 export const getUserInfo = () => {
-    return localStorage.getItem(USER_INFO_KEY) || "{}"
+    return JSON.parse(localStorage.getItem(USER_INFO_KEY) || "{}")
 }
 
 // 删除用户信息

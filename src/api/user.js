@@ -15,3 +15,11 @@ export const userInfo = (data = {}) => {
         data
     })
 }
+
+export const logout = (data = {}) => {
+    return request({
+        url: '/admin/logout',
+        method: "POST",
+        data
+    })
+}
