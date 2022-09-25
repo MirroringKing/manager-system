@@ -10,18 +10,43 @@ const getMemberList = (page, size, data) => {
 }
 
 // 添加
-
-
+const addMember = (data) => {
+    return request({
+        url: '/member',
+        method: 'POST',
+        data
+    })
+}
 // 编辑
-
-
+const editMember = (id, data) => {
+    return request({
+        url: `/member/${id}`,
+        method: "PUT",
+        data
+    })
+}
 // 删除
+const deleteMember = (id) => {
+    return request({
+        url: `/member/${id}`,
+        method: "DELETE",
 
+    })
+}
 
 // 查询
-
+const findMember = (id) => {
+    return request({
+      url : `/member/${id}`,
+      method : 'GET'
+    })
+  }
 
 
 export default {
-    getMemberList
+    getMemberList,
+    deleteMember,
+    addMember,
+    editMember,
+    findMember
 }
