@@ -80,7 +80,9 @@ export default {
 .menu {
   width: 500px;
   height: 300px;
-  background-color: skyblue;
+  // background-color: skyblue;
+  background-color:rgba(255,255,255,0.8);
+  border-radius: 10px;
   margin: auto;
   h3 {
     margin-top: 150px;
